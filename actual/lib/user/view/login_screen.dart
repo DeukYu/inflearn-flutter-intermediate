@@ -37,7 +37,7 @@ class LoginScreen extends StatelessWidget {
                 hintText: "이메일을 입력해주세요.",
                 onChanged: (String value) {},
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16.0,
               ),
               CustomTextFormField(
@@ -73,7 +73,15 @@ class LoginScreen extends StatelessWidget {
                       ElevatedButton.styleFrom(backgroundColor: PRIMARY_COLOR),
                   child: Text('로그인')),
               ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () async {
+                    final refreshToken = '';
+                    final res = await dio.post('http://$ip/auth/token',
+                        options: Options(headers: {
+                          'authorization': 'Bearer $refreshToken'
+                        }));
+
+                    print(res.data);
+                  },
                   style: ButtonStyle(
                       textStyle: MaterialStateProperty.all<TextStyle>(
                           TextStyle(color: Colors.black)),
