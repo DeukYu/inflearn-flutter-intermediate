@@ -2,20 +2,13 @@ import 'package:actual/common/const/colors.dart';
 import 'package:flutter/material.dart';
 
 class RestaurantCard extends StatelessWidget {
-  // 이미지
-  final Widget image;
-  // 레스토랑 이름
-  final String name;
-  // 레스토랑 태그
-  final List<String> tags;
-  // 평점 갯수
-  final int ratingsCount;
-  // 배송 걸리는 시간
-  final int deliveryTime;
-  // 배송 비용
-  final int deliveryFre;
-  // 평균 평점
-  final double rating;
+  final Widget image; // 이미지
+  final String name; // 레스토랑 이름
+  final List<String> tags; // 레스토랑 태그
+  final int ratingsCount; // 평점 갯수
+  final int deliveryTime; // 배송 걸리는 시간
+  final int deliveryFre; // 배송 비용
+  final double rating; // 평균 평점
 
   const RestaurantCard(
       {super.key,
@@ -58,16 +51,25 @@ class RestaurantCard extends StatelessWidget {
             ),
             Row(
               children: [
-                _IconText(icon: Icons.star, label: rating.toString()),
-                rederDot(),
-                _IconText(icon: Icons.receipt, label: ratingsCount.toString()),
+                _IconText(
+                  icon: Icons.star,
+                  label: rating.toString(),
+                ),
                 rederDot(),
                 _IconText(
-                    icon: Icons.timelapse_outlined, label: '$deliveryTime 분'),
+                  icon: Icons.receipt,
+                  label: ratingsCount.toString(),
+                ),
                 rederDot(),
                 _IconText(
-                    icon: Icons.monetization_on,
-                    label: deliveryFre == 0 ? '무료' : deliveryFre.toString()),
+                  icon: Icons.timelapse_outlined,
+                  label: '$deliveryTime 분',
+                ),
+                rederDot(),
+                _IconText(
+                  icon: Icons.monetization_on,
+                  label: deliveryFre == 0 ? '무료' : deliveryFre.toString(),
+                ),
               ],
             )
           ],
@@ -77,8 +79,8 @@ class RestaurantCard extends StatelessWidget {
   }
 
   Widget rederDot() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 4.0),
       child: Text(
         '·',
         style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w500),
@@ -90,7 +92,7 @@ class RestaurantCard extends StatelessWidget {
 class _IconText extends StatelessWidget {
   final IconData icon;
   final String label;
-  const _IconText({super.key, required this.icon, required this.label});
+  const _IconText({required this.icon, required this.label});
 
   @override
   Widget build(BuildContext context) {
@@ -106,7 +108,7 @@ class _IconText extends StatelessWidget {
         ),
         Text(
           label,
-          style: TextStyle(fontSize: 12.0, fontWeight: FontWeight.w500),
+          style: const TextStyle(fontSize: 12.0, fontWeight: FontWeight.w500),
         )
       ],
     );

@@ -34,8 +34,8 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              _Title(),
-              _SubTitle(),
+              const _Title(),
+              const _SubTitle(),
               Image.asset(
                 'assets/img/misc/logo.png',
                 width: MediaQuery.of(context).size.width / 5 * 2,
@@ -77,28 +77,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         key: ACCESS_TOKEN_KEY, value: accessToken);
 
                     Navigator.of(context).push(MaterialPageRoute(
-                      builder: (_) => RootTab(),
+                      builder: (_) => const RootTab(),
                     ));
                   },
                   style:
                       ElevatedButton.styleFrom(backgroundColor: PRIMARY_COLOR),
-                  child: Text('로그인')),
+                  child: const Text('로그인')),
               ElevatedButton(
-                  onPressed: () async {
-                    final refreshToken = '';
-                    final res = await dio.post('http://$ip/auth/token',
-                        options: Options(headers: {
-                          'authorization': 'Bearer $refreshToken'
-                        }));
-
-                    print(res.data);
-                  },
+                  onPressed: () async {},
                   style: ButtonStyle(
                       textStyle: MaterialStateProperty.all<TextStyle>(
-                          TextStyle(color: Colors.black)),
+                          const TextStyle(color: Colors.black)),
                       backgroundColor:
                           MaterialStateProperty.all<Color>(Colors.white)),
-                  child: Text('회원가입'))
+                  child: const Text('회원가입'))
             ],
           ),
         ),
@@ -108,11 +100,11 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 class _Title extends StatelessWidget {
-  const _Title({super.key});
+  const _Title();
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       '환영합니다!',
       style: TextStyle(
           fontSize: 34.0, fontWeight: FontWeight.w500, color: Colors.black),
@@ -125,7 +117,7 @@ class _SubTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       '이메일과 비밀번호를 입력해서 로그인 해주세요! \n오늘도 성공적인 주문이 되길 :)',
       style: TextStyle(fontSize: 16.0, color: BODY_TEXT_COLOR),
     );
