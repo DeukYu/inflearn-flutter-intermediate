@@ -38,24 +38,6 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return DefaultLayout(
       title: 'DY 딜리버리',
-      child: TabBarView(controller: controller, children: [
-        RestaurantScreen(),
-        Center(
-          child: Container(
-            child: Text("음식"),
-          ),
-        ),
-        Center(
-          child: Container(
-            child: Text("주문"),
-          ),
-        ),
-        Center(
-          child: Container(
-            child: Text("프로필"),
-          ),
-        )
-      ]),
       bottomNavigationBar: BottomNavigationBar(
           selectedItemColor: PRIMARY_COLOR,
           unselectedItemColor: BODY_TEXT_COLOR,
@@ -66,7 +48,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
             controller.animateTo(index);
           },
           currentIndex: index,
-          items: [
+          items: const [
             BottomNavigationBarItem(
                 icon: Icon(Icons.home_outlined), label: '홈'),
             BottomNavigationBarItem(
@@ -74,6 +56,21 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
             BottomNavigationBarItem(
                 icon: Icon(Icons.receipt_long_outlined), label: '주문'),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: '프로필'),
+          ]),
+      child: TabBarView(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: controller,
+          children: const [
+            RestaurantScreen(),
+            Center(
+              child: Text("음식"),
+            ),
+            Center(
+              child: Text("주문"),
+            ),
+            Center(
+              child: Text("프로필"),
+            )
           ]),
     );
   }
