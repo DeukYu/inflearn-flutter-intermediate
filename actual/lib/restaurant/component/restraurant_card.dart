@@ -7,8 +7,8 @@ class RestaurantCard extends StatelessWidget {
   final List<String> tags; // 레스토랑 태그
   final int ratingsCount; // 평점 갯수
   final int deliveryTime; // 배송 걸리는 시간
-  final int deliveryFre; // 배송 비용
-  final double rating; // 평균 평점
+  final int deliveryFee; // 배송 비용
+  final double ratings; // 평균 평점
 
   const RestaurantCard(
       {super.key,
@@ -17,8 +17,8 @@ class RestaurantCard extends StatelessWidget {
       required this.tags,
       required this.ratingsCount,
       required this.deliveryTime,
-      required this.deliveryFre,
-      required this.rating});
+      required this.deliveryFee,
+      required this.ratings});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class RestaurantCard extends StatelessWidget {
               children: [
                 _IconText(
                   icon: Icons.star,
-                  label: rating.toString(),
+                  label: ratings.toString(),
                 ),
                 rederDot(),
                 _IconText(
@@ -68,7 +68,7 @@ class RestaurantCard extends StatelessWidget {
                 rederDot(),
                 _IconText(
                   icon: Icons.monetization_on,
-                  label: deliveryFre == 0 ? '무료' : deliveryFre.toString(),
+                  label: deliveryFee == 0 ? '무료' : deliveryFee.toString(),
                 ),
               ],
             )
