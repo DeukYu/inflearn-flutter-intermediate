@@ -1,4 +1,5 @@
 import 'package:actual/common/const/colors.dart';
+import 'package:actual/restaurant/model/restraurant_detail_model.dart';
 import 'package:actual/restaurant/model/restraurant_model.dart';
 import 'package:flutter/material.dart';
 
@@ -38,6 +39,7 @@ class RestaurantCard extends StatelessWidget {
       deliveryFee: model.deliveryFee,
       ratings: model.ratings,
       isDetail: isDetail,
+      detail: model is RestaurantDetailModel ? model.detail : null,
     );
   }
 
