@@ -23,18 +23,6 @@ class RestaurantDetailScreen extends StatelessWidget {
         RestaurantRepository(dio, baseUrl: 'http://$ip/restaurant');
 
     return repository.getRestaurantDetail(id: id);
-
-    // final accessToken = await storage.read(key: ACCESS_TOKEN_KEY);
-    // final res = await dio.get(
-    //   'http://$ip/restaurant/$id',
-    //   options: Options(
-    //     headers: {
-    //       'authorization': 'Bearer $accessToken',
-    //     },
-    //   ),
-    // );
-
-    //return res.data;
   }
 
   @override
