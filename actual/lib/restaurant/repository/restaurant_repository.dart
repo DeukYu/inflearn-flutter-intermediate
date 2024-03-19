@@ -1,10 +1,12 @@
 import 'package:actual/common/const/data.dart';
 import 'package:actual/common/dio/dio.dart';
 import 'package:actual/common/model/cursor_pagination_model.dart';
+import 'package:actual/common/model/pagination_params.dart';
 import 'package:actual/restaurant/model/restraurant_detail_model.dart';
 import 'package:actual/restaurant/model/restraurant_model.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart' as retrofit;
 
 part 'restaurant_repository.g.dart';
@@ -25,7 +27,9 @@ abstract class RestaurantRepository {
 
   @retrofit.GET('/')
   @retrofit.Headers({'accessToken': 'true'})
-  Future<CursorPagination<RestaurantModel>> paginate();
+  Future<CursorPagination<RestaurantModel>> paginate({
+    @Queries() PaginationParams? paginationParams,
+  });
 
   @retrofit.GET('/{id}')
   @retrofit.Headers({'accessToken': 'true'})
