@@ -2,6 +2,7 @@ import 'package:actual/common/const/colors.dart';
 import 'package:actual/restaurant/model/restraurant_detail_model.dart';
 import 'package:actual/restaurant/model/restraurant_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class RestaurantCard extends StatelessWidget {
   final Widget image; // 이미지
@@ -11,27 +12,34 @@ class RestaurantCard extends StatelessWidget {
   final int deliveryTime; // 배송 걸리는 시간
   final int deliveryFee; // 배송 비용
   final double ratings; // 평균 평점
+  final String? heroKey; // Hero 위젯 태그
   final bool isDetail; // 상세 카드 여부
   final String? detail; // 상세 내용
 
-  const RestaurantCard(
-      {super.key,
-      required this.image,
-      required this.name,
-      required this.tags,
-      required this.ratingsCount,
-      required this.deliveryTime,
-      required this.deliveryFee,
-      required this.ratings,
-      this.isDetail = false,
-      this.detail});
+  const RestaurantCard({
+    super.key,
+    required this.image,
+    required this.name,
+    required this.tags,
+    required this.ratingsCount,
+    required this.deliveryTime,
+    required this.deliveryFee,
+    required this.ratings,
+    this.isDetail = false,
+    this.detail,
+    this.heroKey,
+  });
 
   factory RestaurantCard.fromModel({
     required RestaurantModel model,
     bool isDetail = false,
   }) {
     return RestaurantCard(
-      image: Image.network(model.thumbUrl, fit: BoxFit.cover),
+      image: Image.network(
+        model.thumbUrl,
+        fit: BoxFit.cover,
+      ),
+      heroKey: model.id,
       name: model.name,
       tags: model.tags,
       ratingsCount: model.ratingsCount,
@@ -47,10 +55,17 @@ class RestaurantCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (isDetail) image,
-        if (!isDetail)
+        if (heroKey != null)
+          Hero(
+            tag: ObjectKey(heroKey),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(isDetail ? 0 : 12.0),
+              child: image,
+            ),
+          ),
+        if (heroKey == null)
           ClipRRect(
-            borderRadius: BorderRadius.circular(12.0),
+            borderRadius: BorderRadius.circular(isDetail ? 0 : 12.0),
             child: image,
           ),
         const SizedBox(
