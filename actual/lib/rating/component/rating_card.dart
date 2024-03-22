@@ -1,5 +1,3 @@
-import 'dart:js_interop';
-
 import 'package:actual/common/const/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';

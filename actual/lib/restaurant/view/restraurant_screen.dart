@@ -37,7 +37,7 @@ class _RestaurantScreenState extends ConsumerState<RestaurantScreen> {
 
     // 완전 처음 로딩일때
     if (data is CursorPaginationLoading) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(),
       );
     }
@@ -69,8 +69,8 @@ class _RestaurantScreenState extends ConsumerState<RestaurantScreen> {
               ),
               child: Center(
                 child: data is CursorPaginationFetchingMore
-                    ? CircularProgressIndicator()
-                    : Text('마지막 데이터입니다.'),
+                    ? const CircularProgressIndicator()
+                    : const Text('마지막 데이터입니다.'),
               ),
             );
           }

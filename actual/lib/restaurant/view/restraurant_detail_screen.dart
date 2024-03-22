@@ -6,7 +6,6 @@ import 'package:actual/restaurant/model/restraurant_detail_model.dart';
 import 'package:actual/restaurant/model/restraurant_model.dart';
 import 'package:actual/restaurant/provider/restraurant_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:skeletons/skeletons.dart';
 
@@ -33,7 +32,7 @@ class _RestaurantDetailScreenState
     final state = ref.watch(restaurantDetailProvider(widget.id));
 
     if (state == null) {
-      return DefaultLayout(
+      return const DefaultLayout(
         child: Center(
           child: CircularProgressIndicator(),
         ),
@@ -50,21 +49,13 @@ class _RestaurantDetailScreenState
           if (state is! RestaurantDetailModel) renderLoading(),
           if (state is RestaurantDetailModel) renderLabel(),
           if (state is RestaurantDetailModel)
-            renderProducts(
-              products: state.products,
-            ),
-          SliverPadding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            sliver: SliverToBoxAdapter(
-              child: RatingCard(
-                avatarImage: AssetImage('assets/img/logo/codefactory_logo.png'),
-                images: [],
-                rating: 4,
-                email: 'test@naver.com',
-                content:
-                    'JMT 맛있습니다.JMT 맛있습니다.JMT 맛있습니다.JMT 맛있습니다.JMT 맛있습니다.JMT 맛있습니다.JMT 맛있습니다.JMT 맛있습니다.',
-              ),
-            ),
+            renderProducts(products: state.products),
+          renderRating(
+            avatarImage: const AssetImage('assets/img/logo/codefactory.png'),
+            email: 'ldy@gmail.com',
+            rating: 4,
+            content: '리뷰 콘텐츠',
+            images: [],
           ),
         ],
       ),
@@ -73,7 +64,7 @@ class _RestaurantDetailScreenState
 
   SliverPadding renderLoading() {
     return SliverPadding(
-      padding: const EdgeInsets.symmetric(
+      padding: EdgeInsets.symmetric(
         horizontal: 16.0,
         vertical: 16.0,
       ),
@@ -129,11 +120,32 @@ class _RestaurantDetailScreenState
           (context, index) {
             final model = products[index];
             return Padding(
-              padding: EdgeInsets.only(top: 16.0),
+              padding: const EdgeInsets.only(top: 16.0),
               child: ProductCard.fromModel(model: model),
             );
           },
           childCount: products.length,
+        ),
+      ),
+    );
+  }
+
+  SliverPadding renderRating({
+    required ImageProvider avatarImage,
+    required String email,
+    required int rating,
+    required String content,
+    required List<Image> images,
+  }) {
+    return SliverPadding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      sliver: SliverToBoxAdapter(
+        child: RatingCard(
+          avatarImage: avatarImage,
+          images: images,
+          rating: rating,
+          email: email,
+          content: content,
         ),
       ),
     );

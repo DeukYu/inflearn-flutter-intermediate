@@ -130,7 +130,7 @@ class RestaurantStateNotifier extends StateNotifier<CursorPaginationBase> {
   }) async {
     //  만약에 아직 데이터가 하나도 없는 상태라면 (CursorPagination이 아니라면) 데이터를 가져오는 시도를 한다.
     if (state is! CursorPagination) {
-      await this.paginate();
+      await paginate();
     }
 
     // state가 CursorPagination이 아닐때 그냥 리턴
