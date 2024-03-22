@@ -1,7 +1,7 @@
 import 'package:actual/common/model/cursor_pagination_model.dart';
 import 'package:actual/restaurant/component/restraurant_card.dart';
 import 'package:actual/restaurant/provider/restraurant_provider.dart';
-import 'package:actual/restaurant/view/restraurant_detail_screen.dart';
+import 'package:actual/restaurant/view/restaurant_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

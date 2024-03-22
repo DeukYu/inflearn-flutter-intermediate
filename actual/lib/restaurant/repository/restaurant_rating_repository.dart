@@ -9,11 +9,12 @@ import 'package:retrofit/retrofit.dart' as retrofit;
 
 part 'restaurant_rating_repository.g.dart';
 
-final restaurantRatingRepositoryProvider = Provider((ref) {
+final restaurantRatingRepositoryProvider =
+    Provider.family<RestaurantRatingRepository, String>((ref, id) {
   final dio = ref.watch(dioProvider);
 
-  final repository =
-      RestaurantRatingRepository(dio, baseUrl: 'http://$ip/restaurant');
+  final repository = RestaurantRatingRepository(dio,
+      baseUrl: 'http://$ip/restaurant/$id/rating');
 
   return repository;
 });
