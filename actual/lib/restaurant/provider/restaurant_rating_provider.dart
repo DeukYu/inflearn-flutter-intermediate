@@ -4,7 +4,7 @@ import 'package:actual/rating/model/rating_model.dart';
 import 'package:actual/restaurant/repository/restaurant_rating_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final restaurntRatingProvider = StateNotifierProvider.family<
+final restaurantRatingProvider = StateNotifierProvider.family<
     RestaurantRatingStateNotifier, CursorPaginationBase, String>(
   (ref, id) {
     final repository = ref.watch(restaurantRatingRepositoryProvider(id));

@@ -1,8 +1,6 @@
 import 'package:actual/common/model/model_with_id.dart';
 import 'package:actual/common/utils/data_utils.dart';
-import 'package:actual/rating/component/rating_card.dart';
 import 'package:actual/user/model/user_model.dart';
-import 'package:flutter/widgets.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'rating_model.g.dart';
