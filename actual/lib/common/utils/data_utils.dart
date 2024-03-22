@@ -6,6 +6,7 @@ class DataUtils {
   }
 
   static List<String> listpathsToUrls(List values) {
+    if (values.isEmpty) return [];
     return values.map((e) => pathToUrl(e)).toList();
   }
 }
