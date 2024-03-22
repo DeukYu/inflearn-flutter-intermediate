@@ -28,6 +28,7 @@ abstract class RestaurantRatingRepository
 
   @retrofit.GET('/')
   @retrofit.Headers({'accessToken': 'true'})
+  @override
   Future<CursorPagination<RatingModel>> paginate({
     @retrofit.Queries() PaginationParams? paginationParams,
   });

@@ -21,12 +21,14 @@ final restaurantRepositoryProvider = Provider((ref) {
 });
 
 @retrofit.RestApi()
-abstract class RestaurantRepository implements IBasePaginationRepository {
+abstract class RestaurantRepository
+    implements IBasePaginationRepository<RestaurantModel> {
   factory RestaurantRepository(Dio dio, {String baseUrl}) =
       _RestaurantRepository;
 
   @retrofit.GET('/')
   @retrofit.Headers({'accessToken': 'true'})
+  @override
   Future<CursorPagination<RestaurantModel>> paginate({
     @retrofit.Queries() PaginationParams? paginationParams,
   });
