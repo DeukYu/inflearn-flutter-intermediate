@@ -19,5 +19,5 @@ class RestaurantRatingStateNotifier
   RestaurantRatingStateNotifier({required this.repository})
       : super(
           CursorPaginationLoading(),
-        ) {}
+        );
 }
