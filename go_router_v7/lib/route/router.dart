@@ -1,14 +1,18 @@
 import 'package:go_router/go_router.dart';
-import 'package:go_router_v7/screen/basic_screen.dart';
-import 'package:go_router_v7/screen/named_screen.dart';
+import 'package:go_router_v7/screen/1_basic_screen.dart';
+import 'package:go_router_v7/screen/2_named_screen.dart';
+import 'package:go_router_v7/screen/9_login_screen.dart';
 import 'package:go_router_v7/screen/nested_child_screen.dart';
 import 'package:go_router_v7/screen/nested_screen.dart';
 import 'package:go_router_v7/screen/path_param_screen.dart';
 import 'package:go_router_v7/screen/pop_base_screen.dart';
 import 'package:go_router_v7/screen/pop_return_screen.dart';
+import 'package:go_router_v7/screen/private_screen.dart';
 import 'package:go_router_v7/screen/push_screen.dart';
 import 'package:go_router_v7/screen/query_parameter.dart';
 import 'package:go_router_v7/screen/root_screen.dart';
+
+bool authState = false;
 
 final router = GoRouter(
   routes: [
@@ -93,6 +97,32 @@ final router = GoRouter(
               builder: (_, state) => NestedChildScreen(
                 routeName: '/nested/c',
               ),
+            ),
+          ],
+        ),
+        GoRoute(
+          path: 'login',
+          builder: (context, state) => LoginScreen(),
+          routes: [
+            GoRoute(
+              path: 'private',
+              builder: (context, state) => PrivateScreen(),
+            ),
+          ],
+        ),
+        GoRoute(
+          path: 'login2',
+          builder: (context, state) => LoginScreen(),
+          routes: [
+            GoRoute(
+              path: 'private',
+              builder: (context, state) => PrivateScreen(),
+              redirect: (context, state) {
+                if (!authState) {
+                  return '/login2';
+                }
+                return null;
+              },
             ),
           ],
         ),
