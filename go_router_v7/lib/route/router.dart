@@ -29,38 +29,38 @@ final router = GoRouter(
     GoRoute(
       path: '/',
       builder: (context, state) {
-        return RootScreen();
+        return const RootScreen();
       },
       routes: [
         GoRoute(
           path: 'basic',
           builder: (context, state) {
-            return BasicScreen();
+            return const BasicScreen();
           },
         ),
         GoRoute(
           path: 'named',
           name: 'named_screen',
           builder: (context, state) {
-            return NamedScreen();
+            return const NamedScreen();
           },
         ),
         GoRoute(
           path: 'push',
           builder: (context, state) {
-            return PushScreen();
+            return const PushScreen();
           },
         ),
         GoRoute(
           path: 'pop',
           builder: (context, state) {
-            return PopBaseScreen();
+            return const PopBaseScreen();
           },
           routes: [
             GoRoute(
               path: 'return',
               builder: (context, state) {
-                return PopReturnScreen();
+                return const PopReturnScreen();
               },
             ),
           ],
@@ -68,13 +68,13 @@ final router = GoRouter(
         GoRoute(
           path: 'path_param/:id',
           builder: (context, state) {
-            return PathParamScreen();
+            return const PathParamScreen();
           },
           routes: [
             GoRoute(
               path: ':name',
               builder: (context, state) {
-                return PathParamScreen();
+                return const PathParamScreen();
               },
             ),
           ],
@@ -92,19 +92,19 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: 'nested/a',
-              builder: (_, state) => NestedChildScreen(
+              builder: (_, state) => const NestedChildScreen(
                 routeName: '/nested/a',
               ),
             ),
             GoRoute(
               path: 'nested/b',
-              builder: (_, state) => NestedChildScreen(
+              builder: (_, state) => const NestedChildScreen(
                 routeName: '/nested/b',
               ),
             ),
             GoRoute(
               path: 'nested/c',
-              builder: (_, state) => NestedChildScreen(
+              builder: (_, state) => const NestedChildScreen(
                 routeName: '/nested/c',
               ),
             ),
@@ -112,21 +112,21 @@ final router = GoRouter(
         ),
         GoRoute(
           path: 'login',
-          builder: (context, state) => LoginScreen(),
+          builder: (context, state) => const LoginScreen(),
           routes: [
             GoRoute(
               path: 'private',
-              builder: (context, state) => PrivateScreen(),
+              builder: (context, state) => const PrivateScreen(),
             ),
           ],
         ),
         GoRoute(
           path: 'login2',
-          builder: (context, state) => LoginScreen(),
+          builder: (context, state) => const LoginScreen(),
           routes: [
             GoRoute(
               path: 'private',
-              builder: (context, state) => PrivateScreen(),
+              builder: (context, state) => const PrivateScreen(),
               redirect: (context, state) {
                 if (!authState) {
                   return '/login2';
@@ -138,12 +138,12 @@ final router = GoRouter(
         ),
         GoRoute(
           path: 'transition',
-          builder: (context, state) => TransitionScreenOne(),
+          builder: (context, state) => const TransitionScreenOne(),
           routes: [
             GoRoute(
               path: 'detail',
               pageBuilder: (context, state) => CustomTransitionPage(
-                transitionDuration: Duration(seconds: 3),
+                transitionDuration: const Duration(seconds: 3),
                 transitionsBuilder:
                     (context, animation, secondaryAnimation, child) {
                   return FadeTransition(
@@ -151,7 +151,7 @@ final router = GoRouter(
                     child: child,
                   );
                 },
-                child: TransitionScreenTwo(),
+                child: const TransitionScreenTwo(),
               ),
             ),
           ],
