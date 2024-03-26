@@ -146,8 +146,8 @@ final router = GoRouter(
                 transitionDuration: const Duration(seconds: 3),
                 transitionsBuilder:
                     (context, animation, secondaryAnimation, child) {
-                  return FadeTransition(
-                    opacity: animation,
+                  return ScaleTransition(
+                    scale: animation,
                     child: child,
                   );
                 },
@@ -162,5 +162,5 @@ final router = GoRouter(
   errorBuilder: (context, state) => ErrorScreen(
     error: state.error.toString(),
   ),
-  debugLogDiagnostics: true,
+  debugLogDiagnostics: true, // Go Router 관련 로그 기능
 );
