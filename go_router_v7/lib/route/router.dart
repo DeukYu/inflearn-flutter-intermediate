@@ -1,16 +1,19 @@
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_v7/screen/1_basic_screen.dart';
-import 'package:go_router_v7/screen/2_named_screen.dart';
-import 'package:go_router_v7/screen/9_login_screen.dart';
-import 'package:go_router_v7/screen/nested_child_screen.dart';
-import 'package:go_router_v7/screen/nested_screen.dart';
-import 'package:go_router_v7/screen/path_param_screen.dart';
-import 'package:go_router_v7/screen/pop_base_screen.dart';
-import 'package:go_router_v7/screen/pop_return_screen.dart';
-import 'package:go_router_v7/screen/private_screen.dart';
-import 'package:go_router_v7/screen/push_screen.dart';
-import 'package:go_router_v7/screen/query_parameter.dart';
-import 'package:go_router_v7/screen/root_screen.dart';
+import 'package:go_router_v7/screens/10_transition_screen_1.dart';
+import 'package:go_router_v7/screens/10_transition_screen_2.dart';
+import 'package:go_router_v7/screens/1_basic_screen.dart';
+import 'package:go_router_v7/screens/2_named_screen.dart';
+import 'package:go_router_v7/screens/9_login_screen.dart';
+import 'package:go_router_v7/screens/8_nested_child_screen.dart';
+import 'package:go_router_v7/screens/8_nested_screen.dart';
+import 'package:go_router_v7/screens/6_path_param_screen.dart';
+import 'package:go_router_v7/screens/4_pop_base_screen.dart';
+import 'package:go_router_v7/screens/5_pop_return_screen.dart';
+import 'package:go_router_v7/screens/9_private_screen.dart';
+import 'package:go_router_v7/screens/3_push_screen.dart';
+import 'package:go_router_v7/screens/7_query_parameter.dart';
+import 'package:go_router_v7/screens/root_screen.dart';
 
 bool authState = false;
 
@@ -123,6 +126,26 @@ final router = GoRouter(
                 }
                 return null;
               },
+            ),
+          ],
+        ),
+        GoRoute(
+          path: 'transition',
+          builder: (context, state) => TransitionScreenOne(),
+          routes: [
+            GoRoute(
+              path: 'detail',
+              pageBuilder: (context, state) => CustomTransitionPage(
+                transitionDuration: Duration(seconds: 3),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                  return FadeTransition(
+                    opacity: animation,
+                    child: child,
+                  );
+                },
+                child: TransitionScreenTwo(),
+              ),
             ),
           ],
         ),

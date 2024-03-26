@@ -23,7 +23,7 @@ class QueryParameterScreen extends StatelessWidget {
               ).toString(),
             );
           },
-          child: Text('Query Parameter'),
+          child: const Text('Query Parameter'),
         ),
       ],
     ));

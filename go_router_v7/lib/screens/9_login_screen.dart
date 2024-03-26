@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
               context.go('/login2/private');
             }
           },
-          child: Text('Go to Private Route'),
+          child: const Text('Go to Private Route'),
         ),
       ],
     ));

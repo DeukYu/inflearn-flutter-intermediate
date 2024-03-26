@@ -14,13 +14,13 @@ class PushScreen extends StatelessWidget {
           onPressed: () {
             context.push('/basic');
           },
-          child: Text('Push Basic'),
+          child: const Text('Push Basic'),
         ),
         ElevatedButton(
           onPressed: () {
             context.go('/basic');
           },
-          child: Text('Go Basic'),
+          child: const Text('Go Basic'),
         ),
       ],
     ));

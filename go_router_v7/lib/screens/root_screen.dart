@@ -14,31 +14,31 @@ class RootScreen extends StatelessWidget {
             onPressed: () {
               context.go('/basic');
             },
-            child: Text('Go Basic'),
+            child: const Text('Go Basic'),
           ),
           ElevatedButton(
             onPressed: () {
               context.goNamed('named_screen');
             },
-            child: Text('Go Named'),
+            child: const Text('Go Named'),
           ),
           ElevatedButton(
             onPressed: () {
               context.go('/push');
             },
-            child: Text('Go Push'),
+            child: const Text('Go Push'),
           ),
           ElevatedButton(
             onPressed: () {
               context.go('/pop');
             },
-            child: Text('Go Pop'),
+            child: const Text('Go Pop'),
           ),
           ElevatedButton(
             onPressed: () {
               context.go('/path_param/456');
             },
-            child: Text('Go Path Param'),
+            child: const Text('Go Path Param'),
           ),
           ElevatedButton(
             onPressed: () {
@@ -64,6 +64,12 @@ class RootScreen extends StatelessWidget {
             },
             child: const Text('Login2 Screen'),
           ),
+          ElevatedButton(
+            onPressed: () {
+              context.go('/transition');
+            },
+            child: const Text('Transition Screen'),
+          )
         ],
       ),
     );

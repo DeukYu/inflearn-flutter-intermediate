@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:go_router_v7/layout/default_layout.dart';
 
-class PopBaseScreen extends StatelessWidget {
-  const PopBaseScreen({super.key});
+class PopReturnScreen extends StatelessWidget {
+  const PopReturnScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +11,11 @@ class PopBaseScreen extends StatelessWidget {
       body: ListView(
         children: [
           ElevatedButton(
-            onPressed: () async {
-              final result = await context.push('/pop/return');
-              print(result);
+            onPressed: () {
+              context.pop('code factory');
             },
-            child: Text('Push Pop Return Screen'),
-          )
+            child: const Text('Pop'),
+          ),
         ],
       ),
     );
