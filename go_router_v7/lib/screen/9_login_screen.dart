@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:go_router_v7/layout/default_layout.dart';
 import 'package:go_router_v7/route/router.dart';
 
@@ -25,7 +26,14 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Text(authState ? 'logout' : 'login'),
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            print(GoRouterState.of(context).uri.toString());
+            if (GoRouterState.of(context).uri.toString() == '/login') {
+              context.go('/login2/private');
+            } else {
+              context.go('/login2/private');
+            }
+          },
           child: Text('Go to Private Route'),
         ),
       ],
