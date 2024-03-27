@@ -9,7 +9,7 @@ import 'package:retrofit/retrofit.dart';
 part 'user_repository.g.dart';
 
 final userRepositoryProvider = Provider<UserRepository>((ref) {
-  final dio = ref.watch(dioProvider);
+  final dio = ref.read(dioProvider);
 
   return UserRepository(dio, baseUrl: 'http://$ip/user/me');
 });
