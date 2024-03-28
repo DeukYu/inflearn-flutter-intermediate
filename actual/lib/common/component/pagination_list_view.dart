@@ -78,7 +78,7 @@ class _PaginationListViewState<T extends IModelWithId>
                     forceRefetch: true,
                   );
             },
-            child: Text('다시 시도'),
+            child: const Text('다시 시도'),
           )
         ],
       );

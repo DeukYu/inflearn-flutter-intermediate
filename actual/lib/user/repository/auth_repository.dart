@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 final authRepositoryProvider = Provider<AuthRepository>((ref) {
   final dio = ref.watch(dioProvider);
 
-  return AuthRepository(dio: dio, baseUrl: 'http://$ip/user/me');
+  return AuthRepository(dio: dio, baseUrl: 'http://$ip/auth');
 });
 
 class AuthRepository {

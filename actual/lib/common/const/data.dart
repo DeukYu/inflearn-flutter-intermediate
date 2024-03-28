@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 import 'dart:io';
 
 const ACCESS_TOKEN_KEY = 'ACCESS_TOKEN';

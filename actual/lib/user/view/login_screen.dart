@@ -1,6 +1,7 @@
 import 'package:actual/common/component/custom_text_form_field.dart';
 import 'package:actual/common/const/colors.dart';
 import 'package:actual/common/layout/default_layout.dart';
+import 'package:actual/user/model/user_model.dart';
 import 'package:actual/user/provider/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -55,35 +56,37 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                     password = value;
                   }),
               ElevatedButton(
-                  onPressed: () async {
-                    ref.read(userProvider.notifier).login(
-                          username: username,
-                          password: password,
-                        );
-                    // final rawString = '$username:$password';
+                  onPressed: state is UserModelLoading
+                      ? null
+                      : () async {
+                          ref.read(userProvider.notifier).login(
+                                username: username,
+                                password: password,
+                              );
+                          // final rawString = '$username:$password';
 
-                    // Codec<String, String> stringToBase64 = utf8.fuse(base64);
+                          // Codec<String, String> stringToBase64 = utf8.fuse(base64);
 
-                    // String token = stringToBase64.encode(rawString);
+                          // String token = stringToBase64.encode(rawString);
 
-                    // final res = await dio.post('http://$ip/auth/login',
-                    //     options: Options(
-                    //         headers: {'authorization': 'Basic $token'}));
+                          // final res = await dio.post('http://$ip/auth/login',
+                          //     options: Options(
+                          //         headers: {'authorization': 'Basic $token'}));
 
-                    // final refreshToken = res.data['refreshToken'];
-                    // final accessToken = res.data['accessToken'];
+                          // final refreshToken = res.data['refreshToken'];
+                          // final accessToken = res.data['accessToken'];
 
-                    // final storage = ref.read(secureStorageProvider);
+                          // final storage = ref.read(secureStorageProvider);
 
-                    // await storage.write(
-                    //     key: REFRESH_TOKEN_KEY, value: refreshToken);
-                    // await storage.write(
-                    //     key: ACCESS_TOKEN_KEY, value: accessToken);
+                          // await storage.write(
+                          //     key: REFRESH_TOKEN_KEY, value: refreshToken);
+                          // await storage.write(
+                          //     key: ACCESS_TOKEN_KEY, value: accessToken);
 
-                    // Navigator.of(context).push(MaterialPageRoute(
-                    //   builder: (_) => const RootTab(),
-                    // ));
-                  },
+                          // Navigator.of(context).push(MaterialPageRoute(
+                          //   builder: (_) => const RootTab(),
+                          // ));
+                        },
                   style:
                       ElevatedButton.styleFrom(backgroundColor: PRIMARY_COLOR),
                   child: const Text('로그인')),
