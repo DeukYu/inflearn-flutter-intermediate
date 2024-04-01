@@ -90,3 +90,15 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
+
+class _Footer extends StatelessWidget {
+  final String total;
+  const _Footer({required this.total});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [Text("총액 $total")],
+    );
+  }
+}
