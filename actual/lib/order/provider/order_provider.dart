@@ -49,6 +49,7 @@ class OrderStateNotifier
       ));
       return true;
     } catch (e) {
+      print(e);
       return false;
     }
   }
